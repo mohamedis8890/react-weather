@@ -69,12 +69,15 @@ const Current = ({ weatherData, displaySettings }) => {
         />
       </ConditionIcon>
       <Temprature>
-        {displaySettings.tempratureUnit === 'C' ? 
-          weatherData?.current?.temp_c
-          :
-          weatherData?.current?.temp_f
-        }
-        <sup>℃</sup>
+        {displaySettings.tempratureUnit === "C" ? (
+          <>
+            {weatherData?.current?.temp_c} <sup>℃</sup>
+          </>
+        ) : (
+          <>
+            {weatherData?.current?.temp_f} <sup>℉</sup>
+          </>
+        )}
       </Temprature>
       <DateTime>
         <CuurentDay>{currentDay}, </CuurentDay>
@@ -89,13 +92,13 @@ const Current = ({ weatherData, displaySettings }) => {
       <BR />
       <ConditionText>
         <AiOutlineCloud style={{ color: "lightgray", fontSize: "1.8em" }} />
-        <span>{" "}</span>
+        <span> </span>
         {weatherData?.current?.condition?.text}
       </ConditionText>
       <Precipitation>
-    <GiHeavyRain style={{color: 'darkblue', fontSize: "1.5em"}}/>
-    <span>Percipitation</span>
-    {weatherData?.current?.precip_mm}
+        <GiHeavyRain style={{ color: "darkblue", fontSize: "1.5em" }} />
+        <span>Percipitation</span>
+        {weatherData?.current?.precip_mm}
       </Precipitation>
     </Container>
   );
