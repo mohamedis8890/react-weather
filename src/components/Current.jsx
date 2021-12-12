@@ -47,7 +47,7 @@ const BR = styled.div`
   border: 1px solid ghostwhite;
 `;
 
-const Current = ({ weatherData }) => {
+const Current = ({ weatherData, displaySettings }) => {
   const days = [
     "Sunday",
     "Monday",
@@ -69,7 +69,11 @@ const Current = ({ weatherData }) => {
         />
       </ConditionIcon>
       <Temprature>
-        {weatherData?.current?.temp_c}
+        {displaySettings.tempratureUnit === 'C' ? 
+          weatherData?.current?.temp_c
+          :
+          weatherData?.current?.temp_f
+        }
         <sup>℃</sup>
       </Temprature>
       <DateTime>
