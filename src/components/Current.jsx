@@ -1,7 +1,100 @@
 import React from "react";
+import styled from "styled-components";
+import { AiOutlineCloud } from "react-icons/ai";
+import { GiHeavyRain } from "react-icons/gi";
 
-const Current = () => {
-  return <div>Current</div>;
+const Container = styled.div`
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+`;
+
+const ConditionIcon = styled.div``;
+const Image = styled.img`
+  max-width: 300px;
+  height: 300px;
+`;
+const Temprature = styled.div`
+  font-size: 4.2em;
+`;
+const DateTime = styled.div`
+  font-size: 1.4em;
+  margin: 30px 0;
+`;
+const CuurentDay = styled.span`
+  font-weight: 500;
+`;
+const CurrentTime = styled.span`
+  color: gray;
+`;
+const ConditionText = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+`;
+const Precipitation = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+`;
+const BR = styled.div`
+  height: 0px;
+  width: 100%;
+  border: 1px solid ghostwhite;
+`;
+
+const Current = ({ weatherData }) => {
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const d = new Date(weatherData?.location?.localtime);
+  const currentDay = days[d.getDay()];
+
+  return (
+    <Container>
+      <ConditionIcon>
+        <Image
+          src={weatherData?.current?.condition?.icon}
+          alt="Condition Icon"
+        />
+      </ConditionIcon>
+      <Temprature>
+        {weatherData?.current?.temp_c}
+        <sup>℃</sup>
+      </Temprature>
+      <DateTime>
+        <CuurentDay>{currentDay}, </CuurentDay>
+        <CurrentTime>
+          {d.toLocaleTimeString("en-us", {
+            hour12: false,
+            hour: "2-digit",
+            minute: "2-digit",
+          })}
+        </CurrentTime>
+      </DateTime>
+      <BR />
+      <ConditionText>
+        <AiOutlineCloud style={{ color: "lightgray", fontSize: "1.8em" }} />
+        <span>{" "}</span>
+        {weatherData?.current?.condition?.text}
+      </ConditionText>
+      <Precipitation>
+    <GiHeavyRain style={{color: 'darkblue', fontSize: "1.5em"}}/>
+    <span>Percipitation</span>
+    {weatherData?.current?.precip_mm}
+      </Precipitation>
+    </Container>
+  );
 };
 
 export default Current;

@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Search from "./components/Search";
 import Current from "./components/Current";
+import { baseURL, fetchData } from "./utils/fetchAPI";
+import { useEffect, useState } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -23,11 +25,26 @@ const Details = styled.div`
 const Title = styled.h2``;
 
 function App() {
+  const [weatherData, setWeatherData] = useState({});
+
+  const fetchWeather = async (weatherLocation) => {
+    const result = await fetchData(
+      `${baseURL}/current.json?q=${weatherLocation}`
+    );
+    console.log(result);
+    setWeatherData(result);
+  };
+
+  useEffect(()=>{
+    const fetchAtStartup = async ()=> await fetchWeather('Aswan');
+    fetchAtStartup();
+  }, [])
+
   return (
     <Container>
       <Master>
-        <Search />
-        <Current />
+        <Search fetchWeather={fetchWeather} />
+        <Current weatherData={weatherData} />
       </Master>
       <Details>
         <Title>Today's Highlights</Title>

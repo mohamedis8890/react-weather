@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { RiSearchLine } from "react-icons/ri";
 import { MdLocationSearching } from "react-icons/md";
@@ -54,20 +54,9 @@ const searchIconStyles = {
   borderRadius: "50%",
 };
 
-const Search = () => {
+const Search = ({ fetchWeather }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [weatherLocation, setWeatherLocation] = useState("Aswan, Aswan, Egypt");
-
-  useEffect(() => {
-    const fetchCurrentWeather = async () => {
-      const result = await fetchData(
-        `${baseURL}/current.json?q=${weatherLocation}`
-      );
-      console.log(result);
-    };
-    fetchCurrentWeather();
-  }, [weatherLocation]);
 
   const autoComplete = async (e) => {
     const term = e.target.value;
@@ -83,10 +72,9 @@ const Search = () => {
     getCurrentWeather(ip);
   };
 
-  const getCurrentWeather = (location) => {
+  const getCurrentWeather = async (location) => {
     setSearchResults([]);
-    setWeatherLocation(location);
-    console.log(location);
+    await fetchWeather(location);
   };
 
   return (
