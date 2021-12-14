@@ -14,7 +14,6 @@ const Container = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100vw;
-  z-index: -400;
 `;
 
 const Master = styled.div`
@@ -25,7 +24,6 @@ const Master = styled.div`
 const Details = styled.div`
   flex: 3;
   background-color: #f6f6f8;
-  z-index: -500;
 `;
 
 const Title = styled.h2``;
@@ -71,6 +69,7 @@ function App() {
             displaySettings={displaySettings}
           />
         </Header>
+
         <Highlights weatherData={weatherData} />
       </Details>
     </Container>

@@ -1,3 +1,5 @@
+// Inspired by a CodePin by 'Marcus Sacco': https://codepen.io/marcussacco/pen/NAjZYo
+
 import React from "react";
 import styled from "styled-components";
 
@@ -19,14 +21,11 @@ const Bezel = styled.div`
   width: 20px;
   border: 2px dotted #e3f09b;
   border-radius: 50%;
-  z-index: -100;
   position: absolute;
 `;
 const PointerContainer = styled.div`
   height: 20px;
   z-index: -50;
-  -webkit-transform: rotate(121deg);
-  -webkit-transform-origin: bottom;
   transform: rotate(${(props) => props.degree}deg);
   transform-origin: center;
 `;
@@ -37,20 +36,7 @@ const Pointer = styled.div`
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 15px solid darkblue;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
   border-radius: 50%;
-`;
-const Direction = styled.div`
-  height: 100%;
-  width: 100%;
-  top: -70%;
-  left: 20%;
-  font-size: 2em;
-  font-family: sans-serif;
-  color: white;
-  position: relative;
-  z-index: 100;
 `;
 
 const WindCompass = ({ windDegree }) => {
@@ -61,7 +47,6 @@ const WindCompass = ({ windDegree }) => {
           <PointerContainer degree={windDegree}>
             <Pointer />
           </PointerContainer>
-          <Direction />
         </Bezel>
       </CompassRing>
     </Container>

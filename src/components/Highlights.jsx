@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Visibility from "./Visibility";
 import WindStatus from "./WindStatus";
 
 const Container = styled.div`
@@ -9,15 +10,16 @@ const Container = styled.div`
   flex-wrap: wrap;
   marign: 30px;
   padding: 0 20px;
-  z-index: -300;
 `;
 
-const Highlights = ({weatherData}) => {
+const Highlights = ({ weatherData }) => {
   return (
     <Container>
-      <WindStatus 
-        windDirection={weatherData.current.wind_dir} 
-        windDegree={weatherData.current.wind_degree} />
+      <WindStatus
+        windDirection={weatherData.current.wind_dir}
+        windDegree={weatherData.current.wind_degree}
+      />
+      <Visibility />
     </Container>
   );
 };
