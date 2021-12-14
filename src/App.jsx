@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Search from "./components/Search";
 import Current from "./components/Current";
 import Settings from "./components/Settings";
+import Highlights from "./components/Highlights";
+
 import { baseURL, fetchData } from "./utils/fetchAPI";
 
 import { useEffect, useState } from "react";
@@ -12,6 +14,7 @@ const Container = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100vw;
+  z-index: -400;
 `;
 
 const Master = styled.div`
@@ -22,6 +25,7 @@ const Master = styled.div`
 const Details = styled.div`
   flex: 3;
   background-color: #f6f6f8;
+  z-index: -500;
 `;
 
 const Title = styled.h2``;
@@ -43,12 +47,10 @@ function App() {
     setWeatherData(result);
   };
 
-  const[displaySettings,setDisplaySettings] = useState({
-    tempratureUnit: 'C',
-    distanceUnit: 'K'
+  const [displaySettings, setDisplaySettings] = useState({
+    tempratureUnit: "C",
+    distanceUnit: "K",
   });
-
-  
 
   useEffect(() => {
     const fetchAtStartup = async () => await fetchWeather("Aswan");
@@ -56,7 +58,7 @@ function App() {
   }, []);
 
   return (
-        <Container>
+    <Container>
       <Master>
         <Search fetchWeather={fetchWeather} />
         <Current weatherData={weatherData} displaySettings={displaySettings} />
@@ -64,8 +66,12 @@ function App() {
       <Details>
         <Header>
           <Title>Today's Highlights</Title>
-          <Settings setDisplaySettings={setDisplaySettings} displaySettings={displaySettings} />
+          <Settings
+            setDisplaySettings={setDisplaySettings}
+            displaySettings={displaySettings}
+          />
         </Header>
+        <Highlights weatherData={weatherData} />
       </Details>
     </Container>
   );
