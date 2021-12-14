@@ -12,14 +12,18 @@ const Container = styled.div`
   padding: 0 20px;
 `;
 
-const Highlights = ({ weatherData }) => {
+const Highlights = ({ weatherData, displaySettings }) => {
   return (
     <Container>
       <WindStatus
-        windDirection={weatherData.current.wind_dir}
-        windDegree={weatherData.current.wind_degree}
+        windDirection={weatherData?.current?.wind_dir}
+        windDegree={weatherData?.current?.wind_degree}
       />
-      <Visibility />
+      <Visibility
+        visKm={weatherData?.current?.vis_km}
+        visM={weatherData?.current?.vis_miles}
+        unit={displaySettings.distanceUnit}
+      />
     </Container>
   );
 };

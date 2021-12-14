@@ -70,7 +70,10 @@ function App() {
           />
         </Header>
 
-        <Highlights weatherData={weatherData} />
+        <Highlights
+          weatherData={weatherData}
+          displaySettings={displaySettings}
+        />
       </Details>
     </Container>
   );
