@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import AirQuality from "./AirQuality";
 import Humidity from "./Humidity";
 import Sun from "./Sun";
 import Visibility from "./Visibility";
@@ -35,6 +36,7 @@ const Highlights = ({ weatherData, displaySettings }) => {
         sunrise={weatherData?.forecast?.forecastday[0]?.astro?.sunrise}
       />
       <Humidity humidity={weatherData?.current?.humidity} />
+      <AirQuality aqi={weatherData?.current?.air_quality["us-epa-index"]} />
     </Container>
   );
 };

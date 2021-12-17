@@ -21,7 +21,6 @@ const ScalePoint = styled.div`
 `;
 
 const Scale = ({ percentage }) => {
-  console.log(percentage);
   return (
     <>
       <ScaleBoarder>
