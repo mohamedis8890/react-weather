@@ -35,17 +35,21 @@ const TimeSpan = styled.div`
 
 const Sun = ({ sunset, sunrise, date }) => {
   const current = useDate();
+
   const getRemainingTime = (time) => {
     const timeAsDateTime = new Date(`${date} ${time}`);
     const currentDateTime = current;
 
-    const timeDiff = (timeAsDateTime - currentDateTime) / 1000 / 60 / 60;
-    console.log(timeDiff);
+    const timeDiff = (timeAsDateTime - currentDateTime) / 1000 / 60 / 60; // Time difference in hours
+    const hourDiff = Math.trunc(timeDiff); // Take the integer part as hours
+    const minDiff = Math.round((timeDiff % 1) * 60); // Take the fractional part as minutes
 
-    const hourDiff = Math.trunc(timeDiff);
+    const remainingTime =
+      hourDiff < 0 || minDiff < 0
+        ? `- ${Math.abs(hourDiff)}h ${Math.abs(minDiff)}m`
+        : `+ ${hourDiff}h ${minDiff}m`;
 
-    const minDiff = Math.abs(Math.round((timeDiff % 1) * 60));
-    return `${hourDiff}h ${minDiff}m`;
+    return remainingTime; // If the difference is negative the minus sign is in front of hours only
   };
 
   return (
@@ -55,7 +59,7 @@ const Sun = ({ sunset, sunrise, date }) => {
         <Suntime>
           <BsFillArrowUpCircleFill
             color="#ffde4a"
-            style={{ height: "40px", width: "40px", paddingRight: "10px" }}
+            style={{ height: "40px", width: "40px", paddingRight: "20px" }}
           />
           <SunComment>
             {sunrise}
@@ -65,7 +69,7 @@ const Sun = ({ sunset, sunrise, date }) => {
         <Suntime>
           <BsFillArrowDownCircleFill
             color="#ffde4a"
-            style={{ height: "40px", width: "40px", paddingRight: "10px" }}
+            style={{ height: "40px", width: "40px", paddingRight: "20px" }}
           />
           <SunComment>
             {sunset}

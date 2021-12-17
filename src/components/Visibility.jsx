@@ -10,7 +10,6 @@ import {
 
 const Visibility = ({ visKm, visM, unit }) => {
   let comment;
-  console.log(visKm);
   switch (true) {
     case visKm < 1:
       comment = "Fog 😨";

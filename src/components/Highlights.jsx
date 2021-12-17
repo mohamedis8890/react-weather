@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Humidity from "./Humidity";
 import Sun from "./Sun";
 import Visibility from "./Visibility";
 import WindStatus from "./WindStatus";
@@ -33,6 +34,7 @@ const Highlights = ({ weatherData, displaySettings }) => {
         sunset={weatherData?.forecast?.forecastday[0]?.astro?.sunset}
         sunrise={weatherData?.forecast?.forecastday[0]?.astro?.sunrise}
       />
+      <Humidity humidity={weatherData?.current?.humidity} />
     </Container>
   );
 };

@@ -39,7 +39,7 @@ function App() {
 
   const fetchWeather = async (weatherLocation) => {
     const result = await fetchData(
-      `${baseURL}/forecast.json?q=${weatherLocation}&days=3`
+      `${baseURL}/forecast.json?q=${weatherLocation}&days=3&aqi=yes`
     );
     console.log(result);
     setWeatherData(result);
