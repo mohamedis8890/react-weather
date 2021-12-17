@@ -28,7 +28,11 @@ const Highlights = ({ weatherData, displaySettings }) => {
         visM={weatherData?.current?.vis_miles}
         unit={displaySettings.distanceUnit}
       />
-      <Sun />
+      <Sun
+        date={weatherData?.forecast?.forecastday[0]?.date}
+        sunset={weatherData?.forecast?.forecastday[0]?.astro?.sunset}
+        sunrise={weatherData?.forecast?.forecastday[0]?.astro?.sunrise}
+      />
     </Container>
   );
 };
