@@ -18,6 +18,9 @@ const Highlights = ({ weatherData, displaySettings }) => {
       <WindStatus
         windDirection={weatherData?.current?.wind_dir}
         windDegree={weatherData?.current?.wind_degree}
+        windKph={weatherData?.current?.wind_kph}
+        windMph={weatherData?.current?.wind_mph}
+        unit={displaySettings.distanceUnit}
       />
       <Visibility
         visKm={weatherData?.current?.vis_km}

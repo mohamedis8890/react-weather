@@ -8,13 +8,13 @@ import {
   Comment,
 } from "./common-styles/hilights.js";
 
-const WindStatus = ({ windDirection, windDegree }) => {
+const WindStatus = ({ windDirection, windDegree, windKph, windMph, unit }) => {
   return (
     <Container>
       <Title>Wind Status</Title>
       <Stat>
-        7.70
-        <StatUnit>km/h</StatUnit>
+        {unit === "K" ? windKph : windMph}{" "}
+        <StatUnit>{unit === "K" ? "km/h" : "mph"}</StatUnit>
       </Stat>
       <Comment>
         <WindCompass windDegree={windDegree} />
