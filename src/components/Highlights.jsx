@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Sun from "./Sun";
 import Visibility from "./Visibility";
 import WindStatus from "./WindStatus";
 
@@ -27,6 +28,7 @@ const Highlights = ({ weatherData, displaySettings }) => {
         visM={weatherData?.current?.vis_miles}
         unit={displaySettings.distanceUnit}
       />
+      <Sun />
     </Container>
   );
 };

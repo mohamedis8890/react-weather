@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { AiOutlineCloud } from "react-icons/ai";
-import { GiHeavyRain } from "react-icons/gi";
+import { BsCloudRain } from "react-icons/bs";
 
 const Container = styled.div`
   padding: 30px;
@@ -35,7 +35,7 @@ const ConditionText = styled.div`
   align-items: center;
   margin: 30px 0;
 `;
-const Precipitation = styled.div`
+const Rain = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,14 +92,15 @@ const Current = ({ weatherData, displaySettings }) => {
       <BR />
       <ConditionText>
         <AiOutlineCloud style={{ color: "lightgray", fontSize: "1.8em" }} />
-        <span> </span>
-        {weatherData?.current?.condition?.text}
+        <span style={{ padding: "0 5px" }}>
+          {weatherData?.current?.condition?.text}
+        </span>
       </ConditionText>
-      <Precipitation>
-        <GiHeavyRain style={{ color: "darkblue", fontSize: "1.5em" }} />
-        <span>Percipitation</span>
-        {weatherData?.current?.precip_mm}
-      </Precipitation>
+      <Rain>
+        <BsCloudRain style={{ color: "darkblue", fontSize: "1.5em" }} />
+        <span style={{ padding: "0 5px" }}>Rain</span>
+        {weatherData?.forecast?.forecastday[0]?.day.daily_chance_of_rain} %
+      </Rain>
     </Container>
   );
 };
