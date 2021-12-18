@@ -11,6 +11,7 @@ export const Container = styled.div`
   background-color: white;
   border-radius: 20px;
   padding: 20px;
+  position: relative;
 `;
 
 export const Title = styled.div`

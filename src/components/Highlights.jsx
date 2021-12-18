@@ -3,6 +3,7 @@ import styled from "styled-components";
 import AirQuality from "./AirQuality";
 import Humidity from "./Humidity";
 import Sun from "./Sun";
+import UvIndex from "./UvIndex";
 import Visibility from "./Visibility";
 import WindStatus from "./WindStatus";
 
@@ -37,6 +38,7 @@ const Highlights = ({ weatherData, displaySettings }) => {
       />
       <Humidity humidity={weatherData?.current?.humidity} />
       <AirQuality aqi={weatherData?.current?.air_quality["us-epa-index"]} />
+      <UvIndex uvi={weatherData?.current?.uv} />
     </Container>
   );
 };
