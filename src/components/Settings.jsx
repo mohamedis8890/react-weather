@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -20,6 +20,7 @@ const Span = styled.div`
   height: 1.8em;
   overflow: hidden;
   line-height: 2em;
+  font-weight: 600;
   text-align: center;
   vertical-align: middle;
   left: 0;
@@ -44,36 +45,56 @@ const Toggle = styled.input`
 `;
 
 const SettingsAlt = ({ setDisplaySettings, displaySettings }) => {
-  const [selectedTemp, setSelectedTemp] = useState('C');
-  const [selectedDist, setSelectedDist] = useState('K');
+  const [selectedTemp, setSelectedTemp] = useState("C");
+  const [selectedDist, setSelectedDist] = useState("K");
 
-  const handleChangeTemp = temp => {
+  const handleChangeTemp = (temp) => {
     setSelectedTemp(temp);
-    setDisplaySettings({...displaySettings, tempratureUnit: temp})
-  }
+    setDisplaySettings({ ...displaySettings, tempratureUnit: temp });
+  };
 
-  const handleChangeDist = dist =>{
+  const handleChangeDist = (dist) => {
     setSelectedDist(dist);
-    setDisplaySettings({...displaySettings, distanceUnit: dist});
-  }
+    setDisplaySettings({ ...displaySettings, distanceUnit: dist });
+  };
 
   return (
     <Container>
       <Label>
-    <Toggle type="radio" name="temprature" checked={selectedTemp === 'C'} onChange={()=>handleChangeTemp('C')}/>
+        <Toggle
+          type="radio"
+          name="temprature"
+          checked={selectedTemp === "C"}
+          onChange={() => handleChangeTemp("C")}
+        />
         <Span>℃</Span>
       </Label>
       <Label>
-        <Toggle type="radio" name="temprature" checked={selectedTemp === 'F'} onChange={()=>handleChangeTemp('F')}/>
+        <Toggle
+          type="radio"
+          name="temprature"
+          checked={selectedTemp === "F"}
+          onChange={() => handleChangeTemp("F")}
+        />
         <Span>℉</Span>
       </Label>
 
       <Label>
-    <Toggle type="radio" name="distance" checked={selectedDist === 'K'} onChange={()=>handleChangeDist('K')}/>
+        <Toggle
+          type="radio"
+          name="distance"
+          checked={selectedDist === "K"}
+          onChange={() => handleChangeDist("K")}
+        />
         <Span>K</Span>
       </Label>
       <Label>
-    <Toggle type="radio" name="distance" checked={selectedDist === 'M'} onChange={()=>handleChangeDist('M')} />
+        <Toggle
+          type="radio"
+          name="distance"
+          checked={selectedDist === "M"}
+          onChange={() => handleChangeDist("M")}
+        />
         <Span>M</Span>
       </Label>
     </Container>
