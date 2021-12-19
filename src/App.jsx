@@ -7,13 +7,14 @@ import Highlights from "./components/Highlights";
 import { baseURL, fetchData } from "./utils/fetchAPI";
 
 import { useEffect, useState } from "react";
+import Forecasts from "./components/Forecasts";
 
 const Container = styled.div`
   display: flex;
   align-item: stretch;
   justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  max-width: 100%;
 `;
 
 const Master = styled.div`
@@ -24,6 +25,7 @@ const Master = styled.div`
 const Details = styled.div`
   flex: 3;
   background-color: #f6f6f8;
+  max-width: 80%;
 `;
 
 const Title = styled.h2``;
@@ -71,6 +73,14 @@ function App() {
         </Header>
 
         <Highlights
+          weatherData={weatherData}
+          displaySettings={displaySettings}
+        />
+
+        <Header>
+          <Title>Forecasts</Title>
+        </Header>
+        <Forecasts
           weatherData={weatherData}
           displaySettings={displaySettings}
         />

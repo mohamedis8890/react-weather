@@ -16,7 +16,7 @@ const ScalePoint = styled.div`
   height: 1.2em;
   width: 1.2em;
   border-radius: 50%;
-  top: ${(props) => 85 - parseInt(props.top)}%;
+  top: ${(props) => 90 - parseInt(props.top)}%;
   left: 15%;
 `;
 
