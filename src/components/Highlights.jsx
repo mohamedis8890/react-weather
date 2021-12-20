@@ -10,7 +10,7 @@ import WindStatus from "./WindStatus";
 const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   marign: 30px;
   padding: 0 20px;

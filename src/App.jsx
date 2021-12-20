@@ -11,10 +11,9 @@ import Forecasts from "./components/Forecasts";
 
 const Container = styled.div`
   display: flex;
-  align-item: stretch;
-  justify-content: center;
-  height: 100%;
-  max-width: 100%;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100vw;
 `;
 
 const Master = styled.div`
@@ -25,7 +24,6 @@ const Master = styled.div`
 const Details = styled.div`
   flex: 3;
   background-color: #f6f6f8;
-  max-width: 80%;
 `;
 
 const Title = styled.h2``;

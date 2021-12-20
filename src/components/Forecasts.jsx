@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import DayForecast from "./DayForecast";
 import ThreeDayForecast from "./ThreeDayForecast";
 
@@ -8,7 +8,7 @@ const Container = styled.div`
   // align-items: center;
   // justify-content: space-between;
   // flex-wrap: wrap;
-  marign: 30px;
+  marign: auto;
   padding: 0 20px;
 `;
 
@@ -31,8 +31,8 @@ const Tab = styled.div`
 `;
 
 const TabBody = styled.div`
-  width: 100%;
-  overflow: auto;
+  max-width: 67vw;
+  display: flex;
 `;
 
 const Forecasts = ({ weatherData, displaySettings }) => {
@@ -43,7 +43,7 @@ const Forecasts = ({ weatherData, displaySettings }) => {
       <TabSwitch>
         <Tabs>
           <Tab onClick={() => setTab(1)} active={tab === 1 ? true : false}>
-            Today
+            24 Hours
           </Tab>
           <Tab onClick={() => setTab(2)} active={tab === 2 ? true : false}>
             3 Days

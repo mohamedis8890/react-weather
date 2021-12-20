@@ -4,28 +4,27 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  width: 100%;
+  max-width: 100%;
+  overflow: auto;
 `;
 
 const DayForecast = ({ weatherData, displaySettings }) => {
   return (
     <Container>
-      {weatherData?.forecast?.forecastday[0]?.hour
-        ?.filter((hour, index) => index % 3 === 2)
-        .map((item) => (
-          <ForecastItem
-            key={item.time}
-            title={item.time}
-            icon={item.condition.icon}
-            minTemp=""
-            maxTemp=""
-            temp={
-              displaySettings.tempratureUnit === "C" ? item.temp_c : item.temp_f
-            }
-          />
-        ))}
+      {weatherData?.forecast?.forecastday[0]?.hour.map((item) => (
+        <ForecastItem
+          key={item.time}
+          title={item.time}
+          icon={item.condition.icon}
+          minTemp=""
+          maxTemp=""
+          temp={
+            displaySettings.tempratureUnit === "C" ? item.temp_c : item.temp_f
+          }
+        />
+      ))}
     </Container>
   );
 };
