@@ -68,12 +68,14 @@ const Search = ({ fetchWeather }) => {
   };
 
   const getCurrentWeatherByLocation = async () => {
+    setSearchTerm("");
     const ip = await getClientIp();
     getCurrentWeather(ip);
   };
 
   const getCurrentWeather = async (location) => {
     setSearchResults([]);
+    setSearchTerm("");
     await fetchWeather(location);
   };
 

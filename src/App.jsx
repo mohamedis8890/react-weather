@@ -8,6 +8,7 @@ import { baseURL, fetchData } from "./utils/fetchAPI";
 
 import { useEffect, useState } from "react";
 import Forecasts from "./components/Forecasts";
+import Photo from "./components/Photo";
 
 const Container = styled.div`
   display: flex;
@@ -36,12 +37,14 @@ const Header = styled.div`
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
+  const [location, setLocation] = useState("");
 
   const fetchWeather = async (weatherLocation) => {
     const result = await fetchData(
       `${baseURL}/forecast.json?q=${weatherLocation}&days=3&aqi=yes`
     );
     console.log(result);
+    setLocation(`${result.location.name}, ${result.location.country}`);
     setWeatherData(result);
   };
 
@@ -60,6 +63,7 @@ function App() {
       <Master>
         <Search fetchWeather={fetchWeather} />
         <Current weatherData={weatherData} displaySettings={displaySettings} />
+        <Photo location={location} />
       </Master>
       <Details>
         <Header>
