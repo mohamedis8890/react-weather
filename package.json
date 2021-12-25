@@ -1,5 +1,6 @@
 {
   "name": "weather",
+  "homepage": "http://mohamedis8890.github.io/react-weather",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,6 +19,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -42,6 +45,7 @@
     ]
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^2.0.2"
+    "babel-plugin-styled-components": "^2.0.2",
+    "gh-pages": "^3.2.3"
   }
 }
