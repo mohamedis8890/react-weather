@@ -28,7 +28,7 @@ const Image = styled.img`
 `;
 
 const loader = new Loader({
-  apiKey: process.env.REACT_APP_MAPS_API_KEY,
+  apiKey: "AIzaSyDsq-__hMimkHsfxsaT22qCsfV4wogE32I",
   version: "weekly",
   libraries: ["places"],
 });
