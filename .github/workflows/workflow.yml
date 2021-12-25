@@ -17,8 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
         env:
-          REACT_APP_WEATHER_API_KEY: 5a0f7a1d320d468aac9145106211712
-          REACT_APP_MAPS_API_KEY: AIzaSyDsq-__hMimkHsfxsaT22qCsfV4wogE32I
+          REACT_APP_WEATHER_API_KEY: ${{ secrets.REACT_APP_WEATHER_API_KEY }}
+          REACT_APP_MAPS_API_KEY: ${{ secrets.REACT_APP_MAPS_API_KEY }}
           
       - name: Install and build
         run: npm install && npm run build
