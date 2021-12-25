@@ -16,13 +16,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-                  
+
       - name: Install and build
-				run: |
-        	touch .env
-        	echo REACT_APP_WEATHER_API_KEY=${{ secrets.REACT_APP_WEATHER_API_KEY }} >> .env
-        	echo REACT_APP_MAPS_API_KEY=${{ secrets.REACT_APP_MAPS_API_KEY }} >> .env
-        	npm install && npm run build
+        run: |
+          touch .env
+          echo REACT_APP_WEATHER_API_KEY=${{ secrets.REACT_APP_WEATHER_API_KEY }} >> .env
+          echo REACT_APP_MAPS_API_KEY=${{ secrets.REACT_APP_MAPS_API_KEY }} >> .env
+          npm install && npm run build
         env:
           REACT_APP_WEATHER_API_KEY: ${{ secrets.REACT_APP_WEATHER_API_KEY }}
           REACT_APP_MAPS_API_KEY: ${{ secrets.REACT_APP_MAPS_API_KEY }}
